@@ -4,19 +4,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Handle It — AI Receptionist for Australian Tradies</title>
+<title>Google Review Booster for Australian Tradies — Handle It</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Inter',sans-serif;color:#0d1117;background:#fff;-webkit-font-smoothing:antialiased;}
 h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-0.02em;line-height:1.1;}
 .wrap{max-width:1100px;margin:0 auto;padding:0 40px;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* NAV */
 nav{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:200;}
@@ -31,12 +31,8 @@ nav{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-inde
 .btn-ghost:hover{border-color:#fcd09a;color:#9a5500;}
 .btn-amber{display:inline-flex;align-items:center;gap:6px;background:#c2710a;color:#fff;font-weight:700;font-size:13px;padding:9px 18px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;text-decoration:none;}
 .btn-amber:hover{background:#9a5500;}
-
-/* Hamburger - inline SVG, never depends on font */
 .burger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:#334155;align-items:center;justify-content:center;}
 .burger svg{width:24px;height:24px;display:block;}
-
-/* Mobile dropdown */
 .mobile-menu{display:none;position:absolute;top:60px;left:0;right:0;background:#fff;border-bottom:1px solid #e2e8f0;box-shadow:0 8px 24px rgba(0,0,0,0.1);z-index:199;}
 .mobile-menu.open{display:block;}
 .mobile-menu a{display:block;padding:15px 24px;font-size:15px;font-weight:600;color:#334155;text-decoration:none;border-bottom:1px solid #f1f5f9;}
@@ -44,22 +40,26 @@ nav{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-inde
 .mobile-menu a:hover{background:#f8fafc;color:#c2710a;}
 
 /* HERO */
-.hero{padding:56px 0 48px;background:#fff;position:relative;overflow:hidden;}
+.hero{padding:60px 0 52px;background:#fff;position:relative;overflow:hidden;}
 .hero-grid{position:absolute;inset:0;background-image:radial-gradient(#e2e8f0 1px,transparent 1px);background-size:28px 28px;opacity:0.4;pointer-events:none;}
-.hero-inner{position:relative;z-index:1;max-width:700px;}
-.hero-tag{display:inline-flex;align-items:center;gap:7px;background:#fff7ed;border:1px solid #fcd09a;color:#9a5500;font-size:11.5px;font-weight:700;padding:5px 14px;border-radius:999px;margin-bottom:22px;}
+.hero-inner{position:relative;z-index:1;max-width:720px;}
+.hero-tag{display:inline-flex;align-items:center;gap:7px;background:#fef9c3;border:1px solid #fde047;color:#854d0e;font-size:11.5px;font-weight:700;padding:5px 14px;border-radius:999px;margin-bottom:22px;}
 .hero h1{font-size:54px;font-weight:900;color:#0d1117;margin-bottom:18px;line-height:1.05;letter-spacing:-0.04em;}
 .hero h1 span{color:#c2710a;}
-.hero p{font-size:17px;color:#64748b;line-height:1.7;margin-bottom:30px;max-width:560px;}
+.hero p{font-size:17px;color:#64748b;line-height:1.7;margin-bottom:30px;max-width:580px;}
 .hero-btns{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:10px;}
 .btn-cta-primary{display:inline-flex;align-items:center;gap:8px;background:#c2710a;color:#fff;font-weight:700;font-size:15px;padding:14px 28px;border-radius:10px;border:none;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;}
 .btn-cta-primary:hover{background:#9a5500;}
 .btn-cta-secondary{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#475569;font-weight:600;font-size:14px;padding:12px 22px;border-radius:10px;border:1.5px solid #e2e8f0;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;}
 .btn-cta-secondary:hover{border-color:#fcd09a;color:#9a5500;}
-.cta-note{font-size:12px;color:#94a3b8;margin-bottom:28px;}
-.trust-row{display:flex;gap:22px;flex-wrap:wrap;}
+.trust-row{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;}
 .trust-item{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#94a3b8;}
-.trust-item svg{width:16px;height:16px;color:#c2710a;flex-shrink:0;}
+
+/* STAR DISPLAY */
+.star-display{display:flex;align-items:center;gap:4px;margin-bottom:24px;}
+.star-display svg{width:32px;height:32px;}
+.star-count{font-family:'Sora',sans-serif;font-size:28px;font-weight:900;color:#0d1117;margin-left:8px;}
+.star-label{font-size:14px;color:#64748b;margin-left:4px;margin-top:6px;}
 
 /* STATS */
 .stats{background:#0d1117;padding:40px 0;}
@@ -73,136 +73,96 @@ nav{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-inde
 .section{padding:72px 0;}
 .section-header{text-align:center;margin-bottom:48px;}
 .badge{display:inline-block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;padding:4px 13px;border-radius:999px;border:1px solid #fcd09a;background:#fff7ed;color:#9a5500;}
+.badge-yellow{display:inline-block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;padding:4px 13px;border-radius:999px;border:1px solid #fde047;background:#fef9c3;color:#854d0e;}
 .section-title{font-size:34px;font-weight:900;color:#0d1117;margin-top:14px;}
 .section-sub{font-size:15px;color:#64748b;line-height:1.7;margin-top:10px;}
 
 /* CARDS */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;}
 .card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:28px;}
-.card:hover{border-color:#fcd09a;}
-.card-ico{width:40px;height:40px;border-radius:10px;background:#fff7ed;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
-.card-ico svg{width:22px;height:22px;color:#c2710a;}
+.card:hover{border-color:#fde047;box-shadow:0 4px 16px rgba(0,0,0,0.06);}
+.card-ico{width:44px;height:44px;border-radius:10px;background:#fef9c3;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.card-ico svg{width:22px;height:22px;color:#854d0e;}
 .card h3{font-size:15px;font-weight:700;color:#0d1117;margin-bottom:8px;line-height:1.3;}
-.card p{font-size:13px;color:#64748b;line-height:1.7;margin-bottom:14px;}
-.stat-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#9a5500;background:#fff7ed;border:1px solid #fcd09a;padding:4px 10px;border-radius:7px;}
-.step-num{font-family:'Sora',sans-serif;font-size:46px;font-weight:900;color:#fde7c2;line-height:1;margin-bottom:16px;}
-.step-tag{font-size:10.5px;font-weight:700;background:#fff7ed;color:#c2710a;border:1px solid #fcd09a;padding:3px 10px;border-radius:999px;}
+.card p{font-size:13px;color:#64748b;line-height:1.7;}
 
-/* INDUSTRIES - SVG icons inline */
-.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:820px;margin:0 auto;}
-.ind-card{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 12px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;}
-.ind-ico{width:38px;height:38px;border-radius:9px;background:#fff7ed;display:flex;align-items:center;justify-content:center;}
-.ind-ico svg{width:20px;height:20px;color:#c2710a;}
-.ind-lbl{font-size:12.5px;font-weight:600;color:#334155;text-align:center;}
+/* HOW IT WORKS */
+.step-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.step-wrap::before{content:'';position:absolute;top:28px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:2px;background:linear-gradient(90deg,#fde047,#c2710a);z-index:0;}
+.step{text-align:center;padding:0 16px;position:relative;z-index:1;}
+.step-num-circle{width:56px;height:56px;border-radius:50%;background:#c2710a;color:#fff;font-family:'Sora',sans-serif;font-size:20px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+.step h3{font-size:14px;font-weight:700;color:#0d1117;margin-bottom:6px;}
+.step p{font-size:12.5px;color:#64748b;line-height:1.6;}
 
-/* COMPARISON */
-.comp-table{border-radius:14px;border:1px solid #e2e8f0;overflow:hidden;}
-.comp-head{display:grid;grid-template-columns:1fr 1fr 1fr;background:#f8fafc;border-bottom:1px solid #e2e8f0;}
-.comp-head div{padding:13px 18px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#94a3b8;}
-.comp-head .hl{color:#c2710a;background:#fff7ed;}
-.comp-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid #f1f5f9;}
-.comp-row:last-child{border-bottom:none;}
-.comp-row.alt{background:#fafafa;}
-.cc{padding:13px 18px;font-size:13px;display:flex;align-items:center;gap:7px;}
-.cc.feat{font-weight:500;color:#334155;}
-.cc.adm{color:#94a3b8;}
-.cc.pro{color:#9a5500;font-weight:600;background:#fff7ed;}
-.dark-callout{background:#0d1117;border-radius:18px;padding:44px;text-align:center;margin-top:28px;}
-
-/* REVENUE */
-.rev-section{background:#1a2130;padding:72px 0;}
-.rev-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:22px;display:flex;flex-direction:column;}
-.rev-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-.rev-ico{width:36px;height:36px;border-radius:9px;background:rgba(249,115,22,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.rev-ico svg{width:18px;height:18px;color:#f97316;}
-.rev-trade{font-weight:700;color:#fff;font-size:14px;}
-.rev-dl{font-size:12px;color:#64748b;display:flex;justify-content:space-between;margin-bottom:3px;}
-.rev-dl span:last-child{color:#94a3b8;font-weight:600;}
-.rev-hr{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:10px 0;}
-.rev-loss{font-size:11.5px;display:flex;justify-content:space-between;margin-bottom:3px;color:#64748b;}
-.rev-loss span:last-child{color:#f87171;font-weight:600;}
-.rev-total{margin-top:auto;padding-top:14px;}
-.rev-total-inner{background:rgba(249,115,22,0.2);border-radius:10px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
-.rev-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;font-weight:700;white-space:nowrap;}
-.rev-amt{font-family:'Sora',sans-serif;font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1;}
-.rev-yr{font-size:10.5px;color:#64748b;white-space:nowrap;}
-.maths-box{background:#0f172a;border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:36px 44px;text-align:center;margin-top:32px;}
+/* BEFORE/AFTER */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto;}
+.ba-card{border-radius:16px;padding:28px;}
+.ba-before{background:#fef2f2;border:1px solid #fecaca;}
+.ba-after{background:#f0fdf4;border:1px solid #86efac;}
+.ba-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:16px;}
+.ba-before .ba-label{color:#dc2626;}
+.ba-after .ba-label{color:#16a34a;}
+.ba-stars{display:flex;gap:3px;margin-bottom:10px;}
+.ba-stars svg{width:20px;height:20px;}
+.ba-num{font-family:'Sora',sans-serif;font-size:36px;font-weight:900;line-height:1;margin-bottom:4px;}
+.ba-before .ba-num{color:#dc2626;}
+.ba-after .ba-num{color:#16a34a;}
+.ba-sub{font-size:13px;color:#64748b;margin-bottom:16px;}
+.ba-items{display:flex;flex-direction:column;gap:7px;}
+.ba-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+.ba-before .ba-item{color:#7f1d1d;}
+.ba-after .ba-item{color:#14532d;}
 
 /* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:940px;margin:0 auto;align-items:stretch;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:900px;margin:0 auto;align-items:stretch;}
 .plan{display:flex;flex-direction:column;border-radius:16px;padding:28px;position:relative;}
 .plan.light{background:#fff;border:1px solid #e2e8f0;}
 .plan.dark{background:#1a0f35;transform:scale(1.035);z-index:2;}
+.plan.gold{background:#fffbeb;border:2px solid #fde047;}
 .plan-badge-wrap{position:absolute;top:-14px;left:0;right:0;display:flex;justify-content:center;}
-.plan-badge-pill{background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:4px 15px;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em;}
+.plan-badge-pill{background:#c2710a;color:#fff;font-size:10px;font-weight:700;padding:4px 15px;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em;}
+.plan-badge-pill.yellow{background:#eab308;}
 .plan-tier{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;margin-bottom:5px;}
+.plan.gold .plan-tier{color:#854d0e;}
 .plan.dark .plan-tier{color:#f59e0b;}
 .plan-name{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:#0d1117;margin-bottom:2px;}
-.plan.dark .plan-name{color:#fff;}
+.plan.dark .plan-name,.plan.dark .plan-price{color:#fff;}
 .plan-price-row{display:flex;align-items:flex-end;gap:3px;margin:12px 0 3px;}
 .plan-aud{font-size:13px;font-weight:600;color:#94a3b8;margin-bottom:5px;}
 .plan.dark .plan-aud{color:#f59e0b;}
+.plan.gold .plan-aud{color:#854d0e;}
 .plan-price{font-family:'Sora',sans-serif;font-size:40px;font-weight:900;color:#0d1117;line-height:1;}
-.plan.dark .plan-price{color:#fff;}
 .plan-period{font-size:13px;color:#94a3b8;margin-bottom:4px;}
 .plan.dark .plan-period{color:rgba(255,255,255,0.45);}
-.plan-saving{font-size:11.5px;font-weight:700;color:#16a34a;margin-bottom:4px;display:none;}
-.plan.dark .plan-saving{color:#86efac;}
 .plan-setup{font-size:11.5px;color:#94a3b8;margin-bottom:4px;}
 .plan-vp{font-size:12.5px;color:#64748b;line-height:1.55;margin:10px 0 18px;padding:10px 13px;background:#f8fafc;border-radius:0 8px 8px 0;border-left:2px solid #fcd09a;}
 .plan.dark .plan-vp{background:rgba(255,255,255,0.06);border-left-color:rgba(255,200,100,0.4);color:rgba(255,255,255,0.6);}
+.plan.gold .plan-vp{background:#fef9c3;border-left-color:#fde047;color:#713f12;}
 .plan-divider{border:none;border-top:1px solid #f1f5f9;margin-bottom:16px;}
 .plan.dark .plan-divider{border-top-color:rgba(255,255,255,0.08);}
 .feat-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:16px;flex:1;}
 .feat-list li{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;}
-.feat-list li i{font-size:14px;margin-top:1px;flex-shrink:0;color:#c2710a;}
+.feat-list li svg{flex-shrink:0;margin-top:1px;}
 .feat-list li span{color:#334155;line-height:1.45;}
-.plan.dark .feat-list li i{color:#86efac;}
 .plan.dark .feat-list li span{color:#dbeafe;}
-.overage{font-size:11.5px;color:#94a3b8;padding:8px 11px;background:#f8fafc;border-radius:7px;margin-bottom:18px;display:flex;align-items:center;gap:5px;}
-.plan.dark .overage{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.35);}
 .plan-btn{display:block;width:100%;padding:13px;border-radius:10px;font-weight:700;font-size:13.5px;cursor:pointer;border:none;text-align:center;font-family:'Inter',sans-serif;margin-top:auto;text-decoration:none;}
 .plan.light .plan-btn{background:#0d1117;color:#fff;}
 .plan.dark .plan-btn{background:#f97316;color:#fff;}
+.plan.gold .plan-btn{background:#c2710a;color:#fff;}
 .plan-sub{font-size:11px;color:#94a3b8;text-align:center;margin-top:8px;}
-.plan.dark .plan-sub{color:rgba(255,255,255,0.3);}
 
-/* TOGGLE */
-.toggle-wrap{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:44px;flex-wrap:wrap;}
-.toggle-lbl{font-size:14px;font-weight:700;color:#94a3b8;}
-.toggle-lbl.active{color:#0d1117;}
-.toggle-pill{position:relative;width:56px;height:30px;border-radius:999px;background:#cbd5e1;border:none;cursor:pointer;transition:background .25s;flex-shrink:0;}
-.toggle-pill.on{background:#16a34a;}
-.toggle-thumb{position:absolute;top:4px;left:4px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,0.2);}
-.toggle-pill.on .toggle-thumb{transform:translateX(26px);}
-.annual-badge{display:inline-flex;align-items:center;gap:5px;background:#dcfce7;border:2px solid #16a34a;color:#15803d;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;transition:opacity .25s;white-space:nowrap;}
+/* BUNDLE CALLOUT */
+.bundle-box{background:linear-gradient(135deg,#1a0f35 0%,#0d1117 100%);border-radius:20px;padding:48px;text-align:center;margin-top:48px;border:1px solid rgba(255,255,255,0.1);}
 
 /* TESTIMONIALS */
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .testi{border:1px solid #e2e8f0;border-radius:14px;padding:24px;background:#fff;}
-.stars{display:flex;gap:2px;margin-bottom:12px;}
-.stars i{color:#f59e0b;font-size:13px;}
-.testi blockquote{font-size:13px;color:#475569;line-height:1.7;margin-bottom:18px;font-style:italic;}
+.testi-stars{display:flex;gap:2px;margin-bottom:10px;}
+.testi blockquote{font-size:13px;color:#475569;line-height:1.7;margin-bottom:16px;font-style:italic;}
 .reviewer{display:flex;align-items:center;gap:10px;}
 .rav{width:34px;height:34px;border-radius:50%;background:#fff7ed;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9a5500;flex-shrink:0;}
 .rname{font-size:13px;font-weight:600;color:#0d1117;}
 .rrole{font-size:11.5px;color:#94a3b8;}
-
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;max-width:900px;margin:0 auto;}
-.form-wrap{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:34px;}
-.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.fg{margin-bottom:16px;}
-.fg label{display:block;font-size:12px;font-weight:600;color:#334155;margin-bottom:5px;}
-.fg input,.fg select,.fg textarea{width:100%;padding:10px 13px;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;color:#0d1117;font-family:'Inter',sans-serif;outline:none;background:#fff;}
-.fg input:focus,.fg select:focus{border-color:#c2710a;}
-.btn-submit{display:flex;width:100%;align-items:center;justify-content:center;gap:7px;padding:13px;background:#c2710a;color:#fff;border:none;border-radius:9px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;}
-.form-note{font-size:11px;color:#94a3b8;text-align:center;margin-top:7px;}
-.perks{display:flex;flex-direction:column;gap:13px;margin-top:26px;}
-.perk{display:flex;align-items:center;gap:10px;font-size:13.5px;color:#475569;}
-.perk-ico{width:30px;height:30px;border-radius:8px;background:#fff7ed;border:1px solid #fcd09a;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.perk-ico svg{width:15px;height:15px;color:#c2710a;}
 
 /* FAQ */
 .faq-item{border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;margin-bottom:8px;}
@@ -224,20 +184,23 @@ footer{background:#0d1117;padding:48px 0;}
 /* MOBILE CTA BAR */
 .mobile-cta-bar{display:none;}
 
-/* ═══════════ MOBILE 768px ═══════════ */
+/* SVG helpers */
+.ico-check-amber{display:inline-block;width:15px;height:15px;flex-shrink:0;}
+.star-gold{fill:#f59e0b;stroke:#f59e0b;}
+
+/* ═══ MOBILE 768px ═══ */
 @media(max-width:768px){
   .wrap{padding:0 18px;}
   .nav-inner{height:56px;justify-content:space-between;}
-  .nav-links{display:none;}
-  .nav-actions{display:none;}
+  .nav-links,.nav-actions{display:none;}
   .burger{display:flex;}
   .hero{padding:32px 0 28px;}
   .hero h1{font-size:34px;}
-  .hero p{font-size:15px;margin-bottom:22px;}
+  .hero p{font-size:15px;}
+  .star-display svg{width:24px;height:24px;}
+  .star-count{font-size:22px;}
   .btn-cta-primary,.btn-cta-secondary{width:100%;justify-content:center;}
   .hero-btns{width:100%;}
-  .trust-row{gap:12px;}
-  .trust-item{font-size:12px;}
   .stats{padding:24px 0;}
   .stats-grid{grid-template-columns:1fr 1fr;}
   .stat{padding:16px 12px;border-right:none;border-bottom:1px solid rgba(255,255,255,0.07);}
@@ -246,31 +209,15 @@ footer{background:#0d1117;padding:48px 0;}
   .stat-val{font-size:30px;}
   .section{padding:44px 0;}
   .section-title{font-size:26px;}
-  .section-sub{font-size:14px;}
   .section-header{margin-bottom:28px;}
   .grid3{grid-template-columns:1fr;}
-  .card{padding:22px;}
-  .ind-grid{grid-template-columns:repeat(4,1fr);max-width:100%;gap:10px;}
-  .ind-card{padding:14px 8px;}
-  .ind-ico{width:34px;height:34px;}
-  .ind-ico svg{width:18px;height:18px;}
-  .ind-lbl{font-size:11px;}
-  .comp-head{grid-template-columns:1fr 1fr;}
-  .comp-row{grid-template-columns:1fr 1fr;}
-  .comp-head div:nth-child(2){display:none;}
-  .cc.adm{display:none;}
-  .cc{padding:11px 14px;font-size:12.5px;}
-  .dark-callout{padding:24px 18px;}
-  .rev-section{padding:44px 0;}
-  .grid4{grid-template-columns:repeat(2,1fr);}
-  .rev-amt{font-size:24px;}
-  .maths-box{padding:26px 18px;}
+  .step-wrap{grid-template-columns:1fr 1fr;gap:24px;}
+  .step-wrap::before{display:none;}
+  .ba-grid{grid-template-columns:1fr;}
   .pricing-grid{grid-template-columns:1fr;max-width:480px;}
   .plan.dark{transform:none;margin:8px 0;}
   .testi-grid{grid-template-columns:1fr;}
-  .contact-grid{grid-template-columns:1fr;gap:28px;}
-  .form-row-2{grid-template-columns:1fr;}
-  .form-wrap{padding:22px 18px;}
+  .bundle-box{padding:28px 20px;}
   .footer-inner{flex-direction:column;gap:24px;}
   .footer-right{text-align:left;}
   .footer-right a{justify-content:flex-start;}
@@ -290,17 +237,11 @@ footer{background:#0d1117;padding:48px 0;}
   .mob-call{background:#c2710a;color:#fff;}
   .mob-book{background:#f8fafc;color:#334155;border:1.5px solid #e2e8f0;}
 }
-
-/* ═══════════ SMALL 480px ═══════════ */
 @media(max-width:480px){
   .hero h1{font-size:28px;}
-  .hero p{font-size:14px;}
   .section-title{font-size:22px;}
   .stat-val{font-size:26px;}
-  .ind-grid{grid-template-columns:repeat(2,1fr);}
-  .ind-lbl{font-size:12px;}
-  .rev-amt{font-size:22px;}
-  .grid4{grid-template-columns:repeat(2,1fr);}
+  .step-wrap{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -310,62 +251,42 @@ footer{background:#0d1117;padding:48px 0;}
 <nav>
   <div class="wrap">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <div class="nav-logo-mark">
-          <svg width="12" height="15" viewBox="0 0 14 18" fill="none"><path d="M8.5 1L1 10.5H7L5.5 17L13 7.5H7L8.5 1Z" fill="#fff" stroke="#fff" stroke-width="0.5" stroke-linejoin="round"/></svg>
-        </div>
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark"><svg width="12" height="15" viewBox="0 0 14 18" fill="none"><path d="M8.5 1L1 10.5H7L5.5 17L13 7.5H7L8.5 1Z" fill="#fff" stroke="#fff" stroke-width="0.5" stroke-linejoin="round"/></svg></div>
         Handle<span style="color:#c2710a;">It.</span>
       </a>
       <div class="nav-links">
-        <a href="#why">Why It Works</a>
+        <a href="index.html">Stop Missing Calls</a>
+        <a href="#why">Get More Reviews</a>
         <a href="#how">How It Works</a>
         <a href="#pricing">Pricing</a>
-        <a href="#results">Testimonials</a>
         <a href="#faq">FAQ</a>
-        <a href="/reviews" style="color:#c2710a;font-weight:700;">Get More Reviews ★</a>
       </div>
       <div class="nav-actions">
-        <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" class="btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Book a Free Audit
-        </a>
-        <a href="tel:+61483954031" class="btn-amber">
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.57 3.38 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.49a16 16 0 0 0 6.29 6.29l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Talk to Hanny Now
-        </a>
+        <a href="index.html" class="btn-ghost">Stop Missing Calls →</a>
+        <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" class="btn-amber">Book a Free Audit</a>
       </div>
-      <!-- Hamburger — pure SVG, no icon font needed -->
-      <button class="burger" id="burger-btn" onclick="toggleMenu(event)" aria-label="Open menu">
+      <button class="burger" id="burger-btn" onclick="toggleMenu()" aria-label="Open menu">
         <svg id="burger-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
       </button>
     </div>
   </div>
-  <!-- Mobile dropdown menu -->
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#why" onclick="closeMenu()">Why It Works</a>
+    <a href="index.html" onclick="closeMenu()">Stop Missing Calls</a>
+    <a href="#why" onclick="closeMenu()">Get More Reviews</a>
     <a href="#how" onclick="closeMenu()">How It Works</a>
     <a href="#pricing" onclick="closeMenu()">Pricing</a>
-    <a href="#results" onclick="closeMenu()">Testimonials</a>
     <a href="#faq" onclick="closeMenu()">FAQ</a>
-    <a href="/reviews" onclick="closeMenu()" style="color:#c2710a;font-weight:700;">Get More Google Reviews ★</a>
     <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" onclick="closeMenu()">Book a Free Audit →</a>
   </div>
 </nav>
 
-<!-- Sticky mobile CTA bar -->
+<!-- Mobile CTA bar -->
 <div class="mobile-cta-bar">
-  <a href="tel:+61483954031" class="mob-call">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.57 3.38 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.49a16 16 0 0 0 6.29 6.29l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    Talk to Hanny
-  </a>
-  <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" class="mob-book">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    Book Free Audit
-  </a>
+  <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" class="mob-call">Book a Free Audit</a>
+  <a href="index.html" class="mob-book">Stop Missing Calls →</a>
 </div>
 
 <!-- HERO -->
@@ -374,36 +295,115 @@ footer{background:#0d1117;padding:48px 0;}
   <div class="wrap">
     <div class="hero-inner">
       <div class="hero-tag">
-        <span style="width:7px;height:7px;border-radius:50%;background:#c2710a;animation:pulse 2s infinite;flex-shrink:0;"></span>
-        AI Receptionist Built for Australian Tradies
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#854d0e" stroke="#854d0e" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Google Review Automation for Australian Tradies
       </div>
-      <h1>We handle the calls.<br><span>You handle the job.</span></h1>
-      <p>Hanny is the 24/7 AI receptionist built for Australian tradies. She answers your calls, qualifies leads, and books jobs directly into your calendar <strong style="color:#334155;font-weight:600;">while you're on the roof or tools.</strong></p>
+      <h1>More 5-star reviews.<br><span>More jobs. On autopilot.</span></h1>
+      <p>Your next customer Googles you before they call. If your competitor has 80 reviews and you have 12 — they get the job. We automate review requests so every happy customer becomes a 5-star review without you lifting a finger.</p>
+
+      <!-- Google Business Profile Mockup -->
+      <div style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.12);padding:20px 22px;max-width:380px;margin-bottom:28px;border:1px solid #e2e8f0;">
+        <!-- Google header -->
+        <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;">
+          <div style="width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,#c2710a,#f97316);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 14 18" fill="none"><path d="M8.5 1L1 10.5H7L5.5 17L13 7.5H7L8.5 1Z" fill="#fff" stroke="#fff" stroke-width="0.5" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:#0d1117;line-height:1.2;">Dave's Plumbing &amp; Gas</div>
+            <div style="font-size:12px;color:#64748b;margin-top:2px;">Plumber · Sydney NSW</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+              <span style="font-family:'Sora',sans-serif;font-size:22px;font-weight:900;color:#16a34a;line-height:1;">84</span>
+              <span style="font-size:12px;color:#64748b;">Google reviews<br><span style="color:#16a34a;font-weight:600;">+62 in the last 90 days</span></span>
+            </div>
+          </div>
+        </div>
+        <div style="height:1px;background:#f1f5f9;margin-bottom:14px;"></div>
+        <!-- Reviews -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="background:#f8fafc;border-radius:10px;padding:12px 14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:28px;height:28px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#1d4ed8;">SC</div>
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:#0d1117;">Sarah C.</div>
+                  <div style="display:flex;gap:1px;margin-top:1px;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                </div>
+              </div>
+              <span style="font-size:10px;color:#94a3b8;">2 days ago</span>
+            </div>
+            <p style="font-size:11.5px;color:#475569;line-height:1.5;margin:0;">"Turned up on time, fixed the issue in under an hour. Really professional. Would 100% recommend."</p>
+          </div>
+          <div style="background:#f8fafc;border-radius:10px;padding:12px 14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#16a34a;">BT</div>
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:#0d1117;">Brad T.</div>
+                  <div style="display:flex;gap:1px;margin-top:1px;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                </div>
+              </div>
+              <span style="font-size:10px;color:#94a3b8;">5 days ago</span>
+            </div>
+            <p style="font-size:11.5px;color:#475569;line-height:1.5;margin:0;">"Called at 7pm on a Sunday with a burst pipe — Dave answered straight away and was there within 45 mins. Legend."</p>
+          </div>
+          <div style="background:#f8fafc;border-radius:10px;padding:12px 14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:28px;height:28px;border-radius:50%;background:#fce7f3;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#be185d;">JM</div>
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:#0d1117;">Jenny M.</div>
+                  <div style="display:flex;gap:1px;margin-top:1px;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                </div>
+              </div>
+              <span style="font-size:10px;color:#94a3b8;">1 week ago</span>
+            </div>
+            <p style="font-size:11.5px;color:#475569;line-height:1.5;margin:0;">"Third time using Dave — always reliable, always on time, always leaves the place clean. Highly recommend."</p>
+          </div>
+        </div>
+        <!-- Footer label -->
+        <div style="margin-top:12px;text-align:center;">
+          <span style="font-size:10.5px;color:#94a3b8;">Powered by </span>
+          <span style="font-size:10.5px;font-weight:700;color:#c2710a;">Handle It Reviews</span>
+        </div>
+      </div>
+
       <div class="hero-btns">
-        <a href="tel:+61483954031" class="btn-cta-primary">
-          Talk to Hanny Now
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.57 3.38 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.49a16 16 0 0 0 6.29 6.29l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" class="btn-cta-primary">
+          Get Started — Book a Quick Call
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
-        <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" class="btn-cta-secondary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Book a Free Audit Call
-        </a>
+        <a href="#how" class="btn-cta-secondary">See How It Works</a>
       </div>
-      <p class="cta-note">
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;margin-right:3px;"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        Call our live AI assistant right now on your mobile to experience it yourself.
-      </p>
+      <p style="font-size:12px;color:#94a3b8;margin-top:10px;">$149/mo. No lock-in. Setup in 48 hours.</p>
       <div class="trust-row">
         <div class="trust-item">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           No lock-in contracts
         </div>
         <div class="trust-item">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           Live in under 48 hours
         </div>
         <div class="trust-item">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           Australia-wide
         </div>
       </div>
@@ -415,85 +415,95 @@ footer{background:#0d1117;padding:48px 0;}
 <div class="stats">
   <div class="wrap">
     <div class="stats-grid">
-      <div class="stat"><div class="stat-val">3 in 4</div><div class="stat-lbl">Missed calls never call back</div></div>
-      <div class="stat"><div class="stat-val">24/7</div><div class="stat-lbl">Hanny answers every call</div></div>
-      <div class="stat"><div class="stat-val">48hrs</div><div class="stat-lbl">Average setup time</div></div>
-      <div class="stat"><div class="stat-val">Zero</div><div class="stat-lbl">Tech skills required</div></div>
+      <div class="stat"><div class="stat-val">88%</div><div class="stat-lbl">Aussies trust online reviews as much as a personal recommendation</div></div>
+      <div class="stat"><div class="stat-val">3x</div><div class="stat-lbl">More clicks for businesses with 4+ star ratings</div></div>
+      <div class="stat"><div class="stat-val">50+</div><div class="stat-lbl">Average new reviews our clients get in 90 days</div></div>
+      <div class="stat"><div class="stat-val">2hrs</div><div class="stat-lbl">Best time to send a review request after job completion</div></div>
     </div>
   </div>
 </div>
 
-<!-- PROBLEM -->
+<!-- WHY REVIEWS MATTER -->
 <section class="section" id="why" style="background:#fff;">
   <div class="wrap">
     <div class="section-header">
-      <span class="badge">The Problem</span>
-      <h2 class="section-title">Every missed call is money<br>walking out the door.</h2>
-      <p class="section-sub" style="max-width:560px;margin:10px auto 0;">These three problems cost tradie businesses thousands every month.</p>
+      <span class="badge-yellow">Why It Matters</span>
+      <h2 class="section-title">Google reviews aren't optional anymore.<br>They're how jobs get decided.</h2>
+      <p class="section-sub" style="max-width:580px;margin:10px auto 0;">Before a customer even picks up the phone, they've already compared your reviews to your competitor's. Here's what's at stake.</p>
     </div>
     <div class="grid3">
       <div class="card">
-        <div class="card-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45c.97.39 2.03.63 3.12.7a2 2 0 0 1 1.83 2v3a2 2 0 0 1-2.18 2C9.66 21.37 2.63 14.34 1.06 5.94A2 2 0 0 1 3.04 3.75h3a2 2 0 0 1 2 1.83c.07 1.09.31 2.15.7 3.12a2 2 0 0 1-.45 2.11L7 12.07"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div>
-        <h3>Missed calls become lost jobs</h3>
-        <p>You're on the tools, on a roof, or under a sink. Phone rings, can't answer. That customer calls the next tradie on Google — and books with them.</p>
-        <div class="stat-pill">↑ 3 in 4 callers won't leave a voicemail</div>
+        <div class="card-ico">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>They Google you before they call</h3>
+        <p>90% of customers read reviews before choosing a tradie. If your Google profile looks thin or average — they scroll to the next result. You never even get the call.</p>
       </div>
       <div class="card">
-        <div class="card-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
-        <h3>Quotes go cold and you never follow up</h3>
-        <p>You send a quote, hear nothing, move on. Most jobs aren't lost — they're just not followed up. A well-timed reminder wins the job.</p>
-        <div class="stat-pill">↑ 60% of quotes are won on the follow-up</div>
+        <div class="card-ico">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>More reviews = higher Google ranking</h3>
+        <p>Google's local algorithm ranks businesses with more recent, high-quality reviews higher in Maps results. More reviews means more visibility — without paying for ads.</p>
       </div>
       <div class="card">
-        <div class="card-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h3>Invoices sit unpaid for weeks</h3>
-        <p>Chasing payments is awkward and eats time. Automated polite reminders get invoices paid faster — no awkward calls needed.</p>
-        <div class="stat-pill">↑ Automated reminders cut payment time by 40%</div>
+        <div class="card-ico">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Happy customers don't review unless asked</h3>
+        <p>Most happy customers mean to leave a review but forget. An automated SMS with a direct link sent right after the job is the difference between 12 reviews and 120.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHO IT'S FOR -->
+<!-- BEFORE / AFTER -->
 <section class="section" style="background:#f8fafc;">
   <div class="wrap">
     <div class="section-header">
-      <span class="badge">Who It's For</span>
-      <h2 class="section-title">Built for any business where<br>the phone is your pipeline.</h2>
-      <p class="section-sub">If a missed call costs you a job, Hanny pays for herself in the first week.</p>
+      <span class="badge-yellow">The Difference</span>
+      <h2 class="section-title">What a tradie's Google profile looks like<br>before and after 90 days.</h2>
     </div>
-    <div class="ind-grid">
-      <div class="ind-card">
-        <div class="ind-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-        <div class="ind-lbl">Plumbers</div>
+    <div class="ba-grid">
+      <div class="ba-card ba-before">
+        <div class="ba-label">✗ Without Handle It Reviews</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:52px;font-weight:900;color:#dc2626;line-height:1;">11</span>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#7f1d1d;">Google Reviews</div>
+            <div style="font-size:12px;color:#94a3b8;">Last review — 8 months ago</div>
+          </div>
+        </div>
+        <div style="background:#fee2e2;border-radius:8px;padding:10px 14px;margin-bottom:16px;">
+          <p style="font-size:12.5px;color:#991b1b;line-height:1.6;">You do great work but your Google profile doesn't show it. Customers comparing you to a competitor with 80 reviews choose them — before they even call.</p>
+        </div>
+        <div class="ba-items">
+          <div class="ba-item">✗ Buried on page 2 of Google Maps</div>
+          <div class="ba-item">✗ Competitors with more reviews get the call</div>
+          <div class="ba-item">✗ Asking manually feels awkward</div>
+          <div class="ba-item">✗ Happy customers forget to review</div>
+          <div class="ba-item">✗ Zero new reviews coming in</div>
+        </div>
       </div>
-      <div class="ind-card">
-        <div class="ind-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <div class="ind-lbl">Electricians</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-        <div class="ind-lbl">Physios &amp; Chiros</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
-        <div class="ind-lbl">Cleaners</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 12 7 10 5 6c4 0 7 2 7 6z"/><path d="M12 12C12 12 17 10 19 6c-4 0-7 2-7 6z"/><path d="M12 17C12 17 8 15.5 6 12c3.5 0 6 2 6 5z"/><path d="M12 17C12 17 16 15.5 18 12c-3.5 0-6 2-6 5z"/></svg></div>
-        <div class="ind-lbl">Landscapers</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="14" rx="4" ry="6"/><circle cx="12" cy="6" r="2"/><line x1="12" y1="8" x2="12" y2="10"/><line x1="8" y1="11" x2="4" y2="9"/><line x1="8" y1="14" x2="4" y2="14"/><line x1="8" y1="17" x2="4" y2="19"/><line x1="16" y1="11" x2="20" y2="9"/><line x1="16" y1="14" x2="20" y2="14"/><line x1="16" y1="17" x2="20" y2="19"/></svg></div>
-        <div class="ind-lbl">Pest Control</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <div class="ind-lbl">Auto Care</div>
-      </div>
-      <div class="ind-card">
-        <div class="ind-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <div class="ind-lbl">Any Service Business</div>
+      <div class="ba-card ba-after">
+        <div class="ba-label">✓ With Handle It Reviews — 90 days later</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:52px;font-weight:900;color:#16a34a;line-height:1;">73</span>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#14532d;">Google Reviews</div>
+            <div style="font-size:12px;color:#94a3b8;">3 new reviews this week alone</div>
+          </div>
+        </div>
+        <div style="background:#dcfce7;border-radius:8px;padding:10px 14px;margin-bottom:16px;">
+          <p style="font-size:12.5px;color:#14532d;line-height:1.6;">Every happy customer gets an automated SMS 2 hours after the job. One tap and they leave a review. Your profile grows every single week — without you doing a thing.</p>
+        </div>
+        <div class="ba-items">
+          <div class="ba-item">✓ Top 3 on Google Maps in your area</div>
+          <div class="ba-item">✓ More reviews = more inbound calls</div>
+          <div class="ba-item">✓ Fully automated — zero effort from you</div>
+          <div class="ba-item">✓ Consistent flow of new reviews every week</div>
+          <div class="ba-item">✓ 62 new reviews in 90 days</div>
+        </div>
       </div>
     </div>
   </div>
@@ -503,88 +513,35 @@ footer{background:#0d1117;padding:48px 0;}
 <section class="section" id="how" style="background:#fff;">
   <div class="wrap">
     <div class="section-header">
-      <span class="badge">How It Works</span>
-      <h2 class="section-title">Your AI receptionist, live in 48 hours.</h2>
-      <p class="section-sub">Three steps. We do the lot. You just show up to the jobs.</p>
+      <span class="badge-yellow">How It Works</span>
+      <h2 class="section-title">Set and forget. We handle everything.</h2>
+      <p class="section-sub">Four steps. Fully automated. You just do the job — we handle the reviews.</p>
     </div>
-    <div class="grid3">
-      <div class="card"><div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;"><div class="step-num">01</div><span class="step-tag">30-min call</span></div><h3>Free Call Audit</h3><p>We show you exactly how many calls and quotes you're losing — and what each one is worth. No obligation, no jargon.</p></div>
-      <div class="card"><div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;"><div class="step-num">02</div><span class="step-tag">48-hr setup</span></div><h3>We Build Hanny for You</h3><p>We configure your AI in your business name, with your pricing, your calendar sync, and your tone. You don't touch a thing.</p></div>
-      <div class="card"><div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;"><div class="step-num">03</div><span class="step-tag">Hands-free</span></div><h3>Every Call Gets Answered</h3><p>From day one, Hanny picks up every call — even at 9pm Sunday. Leads qualified, jobs booked. You just arrive on site.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARISON -->
-<section class="section" style="background:#fff;">
-  <div class="wrap">
-    <div class="section-header">
-      <span class="badge">The Value</span>
-      <h2 class="section-title">Like a full-time receptionist.<br><span style="color:#c2710a;">Without the wage bill.</span></h2>
-    </div>
-    <div style="max-width:800px;margin:0 auto;">
-      <div class="comp-table">
-        <div class="comp-head"><div>What needs doing</div><div>Part-time admin</div><div class="hl">Hanny AI Receptionist</div></div>
-        <div class="comp-row alt"><div class="cc feat">Cost per month</div><div class="cc adm">✗ $1,000 – $1,500</div><div class="cc pro">✓ From $249 AUD</div></div>
-        <div class="comp-row"><div class="cc feat">Hours available</div><div class="cc adm">✗ Business hours only</div><div class="cc pro">✓ 24/7 incl. weekends</div></div>
-        <div class="comp-row alt"><div class="cc feat">Answers every call</div><div class="cc adm">✗ Only if at desk</div><div class="cc pro">✓ Answers instantly</div></div>
-        <div class="comp-row"><div class="cc feat">Books appointments</div><div class="cc adm">✗ Manually, during hours</div><div class="cc pro">✓ Syncs to your calendar live</div></div>
-        <div class="comp-row alt"><div class="cc feat">Sick days &amp; leave</div><div class="cc adm">✗ Yes</div><div class="cc pro">✓ Never</div></div>
+    <div class="step-wrap">
+      <div class="step">
+        <div class="step-num-circle">01</div>
+        <h3>We connect to your workflow</h3>
+        <p>We set up a simple integration with how you track jobs — whether that's a CRM, job management app, or even a simple spreadsheet.</p>
       </div>
-      <div class="dark-callout">
-        <p style="color:#fff;font-family:'Sora',sans-serif;font-size:20px;font-weight:800;margin-bottom:7px;">Less than the cost of one week's missed calls.</p>
-        <p style="color:#64748b;font-size:13.5px;margin-bottom:26px;">No super. No sick leave. No training. No dramas.</p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;">
-          <a href="tel:+61483954031" class="btn-amber" style="font-size:14px;padding:12px 24px;border-radius:10px;">Talk to Hanny Now</a>
-          <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:transparent;color:#fff;font-weight:600;font-size:14px;padding:12px 22px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.25);text-decoration:none;">Book a Free Audit</a>
-        </div>
+      <div class="step">
+        <div class="step-num-circle">02</div>
+        <h3>Job marked complete</h3>
+        <p>When you mark a job done, our system automatically detects it and starts the review request sequence.</p>
+      </div>
+      <div class="step">
+        <div class="step-num-circle">03</div>
+        <h3>Customer gets an SMS</h3>
+        <p>2 hours after job completion, your customer gets a friendly branded SMS with a direct one-tap link to your Google review page.</p>
+      </div>
+      <div class="step">
+        <div class="step-num-circle">04</div>
+        <h3>Reviews roll in</h3>
+        <p>Happy customers tap the link and leave a review in 60 seconds. You get a monthly report showing your growth.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- REVENUE -->
-<section class="rev-section">
-  <div class="wrap">
-    <div class="section-header" style="margin-bottom:44px;">
-      <span class="badge" style="background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12);color:#f59e0b;">The Real Cost of Doing Nothing</span>
-      <h2 class="section-title" style="color:#fff;margin-top:14px;">How much are you <span style="color:#f59e0b;">leaving on the table?</span></h2>
-      <p style="color:#64748b;font-size:15px;margin-top:9px;">Industry averages for Australian trade businesses.</p>
-    </div>
-    <div class="grid4" style="margin-bottom:32px;align-items:stretch;">
-      <div class="rev-card">
-        <div class="rev-hd"><div class="rev-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="rev-trade">Plumber</div></div>
-        <div class="rev-dl"><span>Avg job value</span><span>$420</span></div><div class="rev-dl"><span>Missed calls/wk</span><span>6</span></div><hr class="rev-hr">
-        <div class="rev-loss"><span>Missed calls</span><span>−$10,080</span></div><div class="rev-loss"><span>Cold quotes</span><span>−$2,016</span></div><div class="rev-loss"><span>Late invoices</span><span>−$756</span></div>
-        <div class="rev-total"><div class="rev-total-inner"><span class="rev-lbl">Monthly Loss</span><span class="rev-amt">$12,852</span><span class="rev-yr">$154k / year</span></div></div>
-      </div>
-      <div class="rev-card">
-        <div class="rev-hd"><div class="rev-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="rev-trade">Electrician</div></div>
-        <div class="rev-dl"><span>Avg job value</span><span>$380</span></div><div class="rev-dl"><span>Missed calls/wk</span><span>5</span></div><hr class="rev-hr">
-        <div class="rev-loss"><span>Missed calls</span><span>−$7,600</span></div><div class="rev-loss"><span>Cold quotes</span><span>−$2,280</span></div><div class="rev-loss"><span>Late invoices</span><span>−$912</span></div>
-        <div class="rev-total"><div class="rev-total-inner"><span class="rev-lbl">Monthly Loss</span><span class="rev-amt">$10,792</span><span class="rev-yr">$130k / year</span></div></div>
-      </div>
-      <div class="rev-card">
-        <div class="rev-hd"><div class="rev-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 12 7 10 5 6c4 0 7 2 7 6z"/><path d="M12 12C12 12 17 10 19 6c-4 0-7 2-7 6z"/><path d="M12 17C12 17 8 15.5 6 12c3.5 0 6 2 6 5z"/><path d="M12 17C12 17 16 15.5 18 12c-3.5 0-6 2-6 5z"/></svg></div><div class="rev-trade">Landscaper</div></div>
-        <div class="rev-dl"><span>Avg job value</span><span>$650</span></div><div class="rev-dl"><span>Missed calls/wk</span><span>4</span></div><hr class="rev-hr">
-        <div class="rev-loss"><span>Missed calls</span><span>−$10,400</span></div><div class="rev-loss"><span>Cold quotes</span><span>−$4,680</span></div><div class="rev-loss"><span>Late invoices</span><span>−$780</span></div>
-        <div class="rev-total"><div class="rev-total-inner"><span class="rev-lbl">Monthly Loss</span><span class="rev-amt">$15,860</span><span class="rev-yr">$190k / year</span></div></div>
-      </div>
-      <div class="rev-card">
-        <div class="rev-hd"><div class="rev-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="rev-trade">Cleaner</div></div>
-        <div class="rev-dl"><span>Avg job value</span><span>$220</span></div><div class="rev-dl"><span>Missed calls/wk</span><span>8</span></div><hr class="rev-hr">
-        <div class="rev-loss"><span>Missed calls</span><span>−$7,040</span></div><div class="rev-loss"><span>Cold quotes</span><span>−$1,320</span></div><div class="rev-loss"><span>Late invoices</span><span>−$792</span></div>
-        <div class="rev-total"><div class="rev-total-inner"><span class="rev-lbl">Monthly Loss</span><span class="rev-amt">$9,152</span><span class="rev-yr">$110k / year</span></div></div>
-      </div>
-    </div>
-    <div class="maths-box">
-      <p style="color:#64748b;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;margin-bottom:12px;">The maths is straightforward</p>
-      <h3 style="font-family:'Sora',sans-serif;color:#fff;font-size:24px;font-weight:900;letter-spacing:-0.03em;line-height:1.2;margin-bottom:8px;">Hanny starts at $249/mo AUD.<br><span style="color:#64748b;">Most tradies recover that in the first week.</span></h3>
-      <p style="color:#475569;font-size:13.5px;max-width:420px;margin:0 auto 24px;line-height:1.65;">Every day without Hanny is another day of revenue walking out the door.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;">
-        <a href="tel:+61483954031" style="display:inline-flex;align-items:center;gap:8px;background:#f97316;color:#fff;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;text-decoration:none;font-family:'Inter',sans-serif;">Talk to Hanny Now</a>
-        <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-weight:600;font-size:14px;padding:13px 26px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.2);text-decoration:none;font-family:'Inter',sans-serif;">Book a Free Audit</a>
-      </div>
+    <div style="margin-top:44px;background:#fef9c3;border:1px solid #fde047;border-radius:14px;padding:24px 28px;max-width:680px;margin-left:auto;margin-right:auto;text-align:center;">
+      <p style="font-size:14px;font-weight:700;color:#713f12;margin-bottom:4px;">Why 2 hours after the job?</p>
+      <p style="font-size:13.5px;color:#854d0e;line-height:1.65;">The customer is still thinking about the great service you delivered. Sending too early feels pushy, too late and they've forgotten. Two hours is the sweet spot — we've tested it across hundreds of trades.</p>
     </div>
   </div>
 </section>
@@ -593,70 +550,80 @@ footer{background:#0d1117;padding:48px 0;}
 <section class="section" id="pricing" style="background:#f8fafc;">
   <div class="wrap">
     <div class="section-header">
-      <span class="badge">Pricing — AUD</span>
-      <h2 class="section-title">Simple, transparent pricing.</h2>
+      <span class="badge-yellow">Pricing — AUD</span>
+      <h2 class="section-title">Simple pricing. Massive impact.</h2>
       <p class="section-sub" style="max-width:500px;margin:10px auto 0;">All prices in Australian dollars. No hidden fees. Cancel anytime.</p>
     </div>
-    <div class="toggle-wrap">
-      <span class="toggle-lbl active" id="lbl-m">Monthly</span>
-      <button class="toggle-pill" id="tgl" onclick="doBilling()" aria-label="Toggle annual billing"><span class="toggle-thumb" id="tgl-thumb"></span></button>
-      <span class="toggle-lbl" id="lbl-a">Annual</span>
-      <span class="annual-badge" id="ann-badge" style="opacity:0.4;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>2 months free</span>
-    </div>
     <div class="pricing-grid">
+
+      <!-- Reviews Only -->
       <div class="plan light">
-        <div class="plan-tier">Tier 1</div>
-        <div class="plan-name">The Solo Tradie</div>
-        <div class="plan-price-row"><span class="plan-aud">AUD</span><span class="plan-price" id="p1">$249</span><span class="plan-period">/mo</span></div>
-        <p class="plan-saving" id="s1"></p>
-        <p class="plan-vp">Perfect for single-operator trades catching missed calls on site.</p>
+        <div class="plan-tier">Reviews Only</div>
+        <div class="plan-name">Review Booster</div>
+        <div class="plan-price-row"><span class="plan-aud">AUD</span><span class="plan-price">$149</span><span class="plan-period">/mo</span></div>
+        <p class="plan-setup">+ $299 one-time setup fee</p>
+        <p class="plan-vp">Perfect for tradies who want more Google reviews without any other changes to how they work.</p>
         <hr class="plan-divider">
         <ul class="feat-list">
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>100 minutes of live AI call handling included</span></li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Instant SMS summaries sent straight to your mobile</span></li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Direct sync to your Google or Apple calendar</span></li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Standard Australian accented voice</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Automated review request SMS after every job</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Direct one-tap link to your Google review page</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Branded SMS in your business name</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Smart timing — sent 2 hours after job completion</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Monthly review growth report</span></li>
         </ul>
-        <div class="overage"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Overages at $0.35/min</div>
-        <a href="tel:+61483954031" class="plan-btn">Talk to Hanny Now</a>
-        <p class="plan-sub">Call our live AI on your mobile now.</p>
+        <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" class="plan-btn">Get Started</a>
+        <p class="plan-sub">Quick 15-min call — live within 48 hours.</p>
       </div>
+
+      <!-- Bundle — Best Value -->
       <div class="plan dark">
         <div class="plan-badge-wrap"><span class="plan-badge-pill">Best Value</span></div>
-        <div class="plan-tier">Tier 2</div>
-        <div class="plan-name">The Growing Business</div>
-        <div class="plan-price-row"><span class="plan-aud">AUD</span><span class="plan-price" id="p2">$499</span><span class="plan-period">/mo</span></div>
-        <p class="plan-saving" id="s2"></p>
-        <p class="plan-vp">Built for small teams overwhelmed by inbound quote traffic.</p>
+        <div class="plan-tier">Bundle</div>
+        <div class="plan-name">Reviews + Hanny AI</div>
+        <div class="plan-price-row"><span class="plan-aud" style="color:#f59e0b;">AUD</span><span class="plan-price">$349</span><span class="plan-period" style="color:rgba(255,255,255,0.45);">/mo</span></div>
+        <p style="font-size:11.5px;color:#86efac;margin-bottom:4px;">Save $49/mo vs buying separately</p>
+        <p class="plan-vp">The complete system — Hanny answers every call 24/7 AND automated reviews after every job. The full stack for a tradie who wants to dominate their local area.</p>
         <hr class="plan-divider">
         <ul class="feat-list">
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>300 minutes of live AI call handling included</span></li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Advanced booking logic — Emergency vs. Standard routing</span></li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Automated SMS &amp; Email follow-up sequences</span></li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Prioritised system speed and response times</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#86efac" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Everything in Review Booster</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#86efac" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Hanny AI Receptionist — 100 mins call handling</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#86efac" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>24/7 call answering — never miss a lead</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#86efac" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>SMS summaries + calendar sync</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#86efac" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Single setup — we handle everything</span></li>
         </ul>
-        <div class="overage"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Overages at $0.30/min</div>
-        <a href="tel:+61483954031" class="plan-btn">Talk to Hanny Now</a>
-        <p class="plan-sub">Call our live AI on your mobile now.</p>
+        <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" class="plan-btn">Claim This Deal</a>
+        <p class="plan-sub">Quick 15-min call — we'll have you live within 48 hours.</p>
       </div>
+
+      <!-- Reviews Pro -->
       <div class="plan light">
-        <div class="plan-tier">Tier 3</div>
-        <div class="plan-name">The Enterprise Sync</div>
-        <div class="plan-price-row"><span class="plan-aud">AUD</span><span class="plan-price" id="p3">$799</span><span class="plan-period">/mo</span></div>
-        <p class="plan-saving" id="s3"></p>
-        <p class="plan-setup">+ $999 one-time setup fee</p>
-        <p class="plan-vp">Elite automation for multi-van operations and established teams.</p>
+        <div class="plan-tier">Reviews Pro</div>
+        <div class="plan-name">Review Booster Pro</div>
+        <div class="plan-price-row"><span class="plan-aud">AUD</span><span class="plan-price">$249</span><span class="plan-period">/mo</span></div>
+        <p class="plan-setup">+ $299 one-time setup fee</p>
+        <p class="plan-vp">For established trades who want to dominate Google rankings with advanced sequences and reputation monitoring.</p>
         <hr class="plan-divider">
         <ul class="feat-list">
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>600 minutes of live AI call handling included</span></li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Direct two-way CRM sync — ServiceM8, AroFlo, SimPRO &amp; more</span></li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Fully custom premium Australian voice profile</span></li>
-          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;color:#c2710a;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Dedicated Account Manager &amp; script optimisation</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Everything in Review Booster</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Multi-step follow-up sequence (3 touchpoints)</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>New negative review alerts within 1 hour</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Review response templates for your team</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Competitor review tracking dashboard</span></li>
         </ul>
-        <div class="overage"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c2710a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Overages at $0.25/min</div>
-        <a href="tel:+61483954031" class="plan-btn">Talk to Hanny Now</a>
-        <p class="plan-sub">Call our live AI on your mobile now.</p>
+        <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" class="plan-btn">Get Started</a>
+        <p class="plan-sub">Quick 15-min call — live within 48 hours.</p>
       </div>
+
+    </div>
+
+    <!-- Bundle callout -->
+    <div class="bundle-box">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;padding:4px 12px;border-radius:999px;margin-bottom:16px;">Best combo for tradies just starting out</div>
+      <h3 style="font-family:'Sora',sans-serif;color:#fff;font-size:26px;font-weight:900;line-height:1.2;margin-bottom:8px;">Reviews + AI Receptionist.<br><span style="color:#f59e0b;">The full stack for $349/mo.</span></h3>
+      <p style="color:#64748b;font-size:14px;line-height:1.65;max-width:500px;margin:0 auto 28px;">Hanny answers every call you miss. Reviews build your reputation automatically. Together — you never lose a job to a competitor again.</p>
+            <a href="https://links.handleit.com.au/widget/booking/pOboGBgQfofv9itV0vBM" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#c2710a;color:#fff;font-weight:700;font-size:15px;padding:14px 30px;border-radius:10px;text-decoration:none;font-family:'Inter',sans-serif;">Claim This Deal — $349/mo</a>
+        <p style="font-size:12px;color:#86efac;margin-top:10px;font-weight:600;">Quick 15-min setup call — live within 48 hours.</p>
+        <p style="font-size:11px;color:#475569;margin-top:4px;">No lock-in. Cancel anytime.</p>
     </div>
   </div>
 </section>
@@ -665,68 +632,61 @@ footer{background:#0d1117;padding:48px 0;}
 <section class="section" id="results" style="background:#fff;">
   <div class="wrap">
     <div class="section-header">
-      <span class="badge">Results</span>
-      <h2 class="section-title">Real tradies. Real results.</h2>
-      <p class="section-sub">From sparkies to plumbers — here's what happens when your follow-up runs itself.</p>
+      <span class="badge-yellow">Results</span>
+      <h2 class="section-title">Tradies who stopped hoping<br>for reviews and started automating them.</h2>
     </div>
     <div class="testi-grid">
-      <div class="testi"><div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><blockquote>"Within the first month the system recovered 6 jobs I would've never known about. Paid for itself in the first week."</blockquote><div class="reviewer"><div class="rav">DK</div><div><div class="rname">Dave Kowalski</div><div class="rrole">Electrician · Brisbane Northside</div></div></div></div>
-      <div class="testi"><div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><blockquote>"Quote conversion went from 40% to over 70%. It's completely changed how I run my business."</blockquote><div class="reviewer"><div class="rav">SM</div><div><div class="rname">Sarah Mitchell</div><div class="rrole">Domestic Cleaner · Sydney Inner West</div></div></div></div>
-      <div class="testi"><div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><blockquote>"Used to have $8k in unpaid invoices. Now it's under $1,500 and I never have to chase anyone."</blockquote><div class="reviewer"><div class="rav">TR</div><div><div class="rname">Tom Reeves</div><div class="rrole">Plumber · Melbourne South East</div></div></div></div>
-      <div class="testi"><div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><blockquote>"Clients actually thank us for following up. Bookings are up 35% since we got Hanny running."</blockquote><div class="reviewer"><div class="rav">JH</div><div><div class="rname">Jess &amp; Mark Huang</div><div class="rrole">Pest Control · Gold Coast</div></div></div></div>
-      <div class="testi"><div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><blockquote>"Recovered three jobs in the first two weeks that would've gone cold. ROI was obvious from day one."</blockquote><div class="reviewer"><div class="rav">CB</div><div><div class="rname">Chris Baxter</div><div class="rrole">Builder · Newcastle</div></div></div></div>
-      <div class="testi"><div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><blockquote>"No-shows were costing me $400–$600 a week. The automated reminders cut that by about 80%."</blockquote><div class="reviewer"><div class="rav">AT</div><div><div class="rname">Angela Torres</div><div class="rrole">Physiotherapist · Perth</div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section" style="background:#f8fafc;">
-  <div class="wrap">
-    <div class="contact-grid">
-      <div>
-        <span class="badge">Get Started</span>
-        <h2 class="section-title" style="margin-top:14px;">Get your free<br>lead audit.</h2>
-        <p class="section-sub">We'll show you exactly how much revenue you're losing — completely free, no obligation.</p>
-        <div class="perks">
-          <div class="perk"><div class="perk-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>Free 30-minute audit call</div>
-          <div class="perk"><div class="perk-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>Available across Australia</div>
-          <div class="perk"><div class="perk-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>Revenue leakage estimate</div>
-          <div class="perk"><div class="perk-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>No lock-in, cancel anytime</div>
+      <div class="testi">
+        <div class="testi-stars">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
+        <blockquote>"Went from 14 reviews to 67 in 3 months. My phone now rings with people who specifically mention seeing my Google reviews. Incredible."</blockquote>
+        <div class="reviewer"><div class="rav">MH</div><div><div class="rname">Mike Henderson</div><div class="rrole">Plumber · Perth Southside</div></div></div>
       </div>
-      <div class="form-wrap">
-        <div class="form-row-2">
-          <div class="fg"><label>Full Name *</label><input type="text" placeholder="Dave Kowalski"></div>
-          <div class="fg"><label>Suburb *</label><input type="text" placeholder="Penrith"></div>
+      <div class="testi">
+        <div class="testi-stars">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <div class="fg"><label>Trade / Industry *</label><select><option value="">Select your trade…</option><option>Electrician</option><option>Plumber</option><option>Builder</option><option>Cleaner</option><option>Landscaper</option><option>Pest Control</option><option>Other</option></select></div>
-        <div class="form-row-2">
-          <div class="fg"><label>Mobile *</label><input type="text" placeholder="0412 345 678"></div>
-          <div class="fg"><label>Email *</label><input type="email" placeholder="dave@example.com"></div>
+        <blockquote>"I used to awkwardly ask customers at the end of a job. Now it just happens automatically. We're now number one on Google Maps in our suburb."</blockquote>
+        <div class="reviewer"><div class="rav">KL</div><div><div class="rname">Karen Lee</div><div class="rrole">Cleaning Business · Melbourne East</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <div class="fg"><label>Anything else? (optional)</label><textarea rows="3" placeholder="Tell us about your biggest challenge right now..."></textarea></div>
-        <button class="btn-submit">Book My Free Audit →</button>
-        <p class="form-note">No spam. No lock-in. We'll call you within 24 hours.</p>
+        <blockquote>"Got the bundle — Hanny answers calls, reviews come in automatically. My business looks 10x bigger online than it actually is. Best investment I've made."</blockquote>
+        <div class="reviewer"><div class="rav">RW</div><div><div class="rname">Ryan Walsh</div><div class="rrole">Electrician · Brisbane Northside</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="section" id="faq" style="background:#fff;">
+<section class="section" id="faq" style="background:#f8fafc;">
   <div class="wrap">
     <div class="section-header">
-      <span class="badge">FAQ</span>
+      <span class="badge-yellow">FAQ</span>
       <h2 class="section-title">Common questions.</h2>
     </div>
     <div style="max-width:680px;margin:0 auto;">
-      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Do I need to be tech-savvy? <span>+</span></button><div class="faq-a">Not at all. We handle the entire setup and ongoing management. Your job is to show up to the jobs Hanny helps you win.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Will Hanny sound robotic to my customers? <span>+</span></button><div class="faq-a">No. Every voice profile uses a natural Australian accent tailored to your specific trade. Clients regularly tell us their customers compliment them on how responsive they are.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">How does the annual discount work? <span>+</span></button><div class="faq-a">Sign up for 12 months and get 2 months completely free — you pay for 10 months and get 12. That's over 16% off. Toggle between monthly and annual above to see your saving.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Which CRMs does the Enterprise plan sync with? <span>+</span></button><div class="faq-a">The Enterprise Sync tier connects directly with ServiceM8, AroFlo, SimPRO, and other major trade CRMs. Your Account Manager handles the full integration setup.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Can I cancel? <span>+</span></button><div class="faq-a">Yes. No lock-in contracts on monthly plans. Cancel with 30 days notice at any time. Most clients see clear ROI within the first two weeks.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">What happens when I go over my included minutes? <span>+</span></button><div class="faq-a">Overages are billed transparently at the end of the month — $0.35/min on Solo Tradie, $0.30/min on Growing Business, and $0.25/min on Enterprise Sync.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Is this against Google's terms? <span>+</span></button><div class="faq-a">No. Asking customers to leave a review is completely within Google's guidelines. What's not allowed is incentivising reviews (paying for them) or fake reviews. We simply automate the legitimate ask — the same thing you'd do manually, just done automatically at the right time.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">What if a customer leaves a bad review? <span>+</span></button><div class="faq-a">It happens occasionally and that's fine — a mix of reviews actually looks more authentic. With Review Booster Pro you get instant alerts so you can respond quickly. The volume of 5-star reviews you generate far outweighs the occasional 3 or 4 star.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Do I need a Google Business Profile? <span>+</span></button><div class="faq-a">Yes — you need a verified Google Business Profile for customers to leave reviews. If you don't have one, we'll help you set it up as part of the onboarding. It's free and takes about 15 minutes.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">How does it know when a job is complete? <span>+</span></button><div class="faq-a">We integrate with how you currently track jobs. Most tradies use a job management app like ServiceM8, AroFlo, or even a simple spreadsheet. We set up the connection during onboarding — you don't change how you work.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Can I cancel? <span>+</span></button><div class="faq-a">Yes. No lock-in contracts on monthly plans. Cancel with 30 days notice at any time.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">How is the bundle different from buying separately? <span>+</span></button><div class="faq-a">The bundle combines Review Booster and Hanny AI Receptionist into one integrated setup for $349/mo — saving you $49/mo versus buying them separately. Everything is managed under one account with one point of contact.</div></div>
     </div>
   </div>
 </section>
@@ -743,12 +703,10 @@ footer{background:#0d1117;padding:48px 0;}
         <p style="font-size:12.5px;color:#475569;max-width:240px;line-height:1.6;margin-top:9px;">We handle the calls. You handle the job.</p>
       </div>
       <div class="footer-links">
-        <a href="#why">Why It Works</a>
-        <a href="#how">How It Works</a>
+        <a href="index.html">Stop Missing Calls</a>
+        <a href="reviews.html">Google Reviews</a>
         <a href="#pricing">Pricing</a>
-        <a href="#results">Testimonials</a>
         <a href="#faq">FAQ</a>
-        <a href="/reviews">Get More Reviews</a>
       </div>
       <div class="footer-right">
         <a href="mailto:hello@handleit.com.au">✉ hello@handleit.com.au</a>
@@ -759,26 +717,13 @@ footer{background:#0d1117;padding:48px 0;}
 </footer>
 
 <script>
-var ann=false,mo=[249,499,799];
-function doBilling(){
-  ann=!ann;
-  var t=document.getElementById('tgl'),lm=document.getElementById('lbl-m'),la=document.getElementById('lbl-a'),ab=document.getElementById('ann-badge');
-  if(ann){t.classList.add('on');lm.classList.remove('active');la.classList.add('active');ab.style.opacity='1';}
-  else{t.classList.remove('on');lm.classList.add('active');la.classList.remove('active');ab.style.opacity='0.4';}
-  for(var i=0;i<3;i++){
-    var pe=document.getElementById('p'+(i+1)),se=document.getElementById('s'+(i+1));
-    if(ann){pe.textContent='$'+Math.round(mo[i]*10/12);se.textContent='Save $'+(mo[i]*2)+' — 2 months free';se.style.display='block';}
-    else{pe.textContent='$'+mo[i];se.style.display='none';}
-  }
-}
 function tFaq(b){
   var a=b.nextElementSibling,o=a.classList.contains('open');
   document.querySelectorAll('.faq-a').forEach(function(x){x.classList.remove('open');});
   if(!o)a.classList.add('open');
 }
 var menuOpen=false;
-function toggleMenu(e){
-  if(e)e.stopPropagation();
+function toggleMenu(){
   menuOpen=!menuOpen;
   var m=document.getElementById('mobile-menu');
   var svg=document.getElementById('burger-svg');
