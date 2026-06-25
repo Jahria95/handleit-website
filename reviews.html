@@ -213,6 +213,11 @@ footer{background:#0d1117;padding:48px 0;}
   .grid3{grid-template-columns:1fr;}
   .step-wrap{grid-template-columns:1fr 1fr;gap:24px;}
   .step-wrap::before{display:none;}
+  /* How it works step grids */
+  .section [style*="grid-template-columns:1fr 1fr"][style*="gap:48px"]{
+    grid-template-columns:1fr !important;
+    gap:28px !important;
+  }
   .ba-grid{grid-template-columns:1fr;}
   .pricing-grid{grid-template-columns:1fr;max-width:480px;}
   .plan.dark{transform:none;margin:8px 0;}
@@ -301,87 +306,73 @@ footer{background:#0d1117;padding:48px 0;}
       <h1>More 5-star reviews.<br><span>More jobs. On autopilot.</span></h1>
       <p>Your next customer Googles you before they call. If your competitor has 80 reviews and you have 12 — they get the job. We automate review requests so every happy customer becomes a 5-star review without you lifting a finger.</p>
 
-      <!-- Google Business Profile Mockup -->
-      <div style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.12);padding:20px 22px;max-width:380px;margin-bottom:28px;border:1px solid #e2e8f0;">
-        <!-- Google header -->
-        <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;">
-          <div style="width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,#c2710a,#f97316);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="24" height="24" viewBox="0 0 14 18" fill="none"><path d="M8.5 1L1 10.5H7L5.5 17L13 7.5H7L8.5 1Z" fill="#fff" stroke="#fff" stroke-width="0.5" stroke-linejoin="round"/></svg>
-          </div>
-          <div>
-            <div style="font-size:15px;font-weight:700;color:#0d1117;line-height:1.2;">Dave's Plumbing &amp; Gas</div>
-            <div style="font-size:12px;color:#64748b;margin-top:2px;">Plumber · Sydney NSW</div>
-            <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
-              <span style="font-family:'Sora',sans-serif;font-size:22px;font-weight:900;color:#16a34a;line-height:1;">84</span>
-              <span style="font-size:12px;color:#64748b;">Google reviews<br><span style="color:#16a34a;font-weight:600;">+62 in the last 90 days</span></span>
+      <!-- Realistic Google Search Result Mockup -->
+      <div style="background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.15);max-width:420px;margin-bottom:28px;border:1px solid #dadce0;font-family:Arial,sans-serif;overflow:hidden;">
+        <!-- Google Maps header bar -->
+        <div style="background:#f8f9fa;border-bottom:1px solid #e8eaed;padding:10px 14px;display:flex;align-items:center;gap:8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <span style="font-size:12px;color:#5f6368;">Google Search · Plumbers near me</span>
+        </div>
+        <!-- Competitor 1 — few reviews, faded -->
+        <div style="padding:12px 16px;border-bottom:1px solid #e8eaed;opacity:0.55;">
+          <div style="font-size:15px;color:#1a0dab;margin-bottom:2px;">Budget Plumbing Co.</div>
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:2px;">
+            <span style="font-size:12px;color:#202124;font-weight:500;">3.8</span>
+            <div style="display:flex;gap:1px;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fbbc04" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fbbc04" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
+            <span style="font-size:12px;color:#70757a;">(9) · Plumber</span>
+          </div>
+          <div style="font-size:12px;color:#188038;">Open · Closes 5pm</div>
+          <div style="font-size:12px;color:#4d5156;margin-top:2px;">"Decent service, showed up eventually."</div>
+        </div>
+        <!-- YOUR client — highlighted, lots of reviews -->
+        <div style="padding:12px 16px;border-bottom:1px solid #e8eaed;background:#fffdf7;position:relative;">
+          <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#c2710a;"></div>
+          <div style="font-size:15px;color:#1a0dab;margin-bottom:2px;font-weight:500;">Dave's Plumbing &amp; Gas</div>
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:2px;">
+            <span style="font-size:12px;color:#202124;font-weight:500;">5.0</span>
+            <div style="display:flex;gap:1px;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span style="font-size:12px;color:#70757a;">(84) · Plumber</span>
+          </div>
+          <div style="font-size:12px;color:#188038;margin-bottom:2px;">Open 24 hours · 0412 345 678</div>
+          <div style="display:flex;align-items:flex-start;gap:5px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#70757a" stroke-width="1.5" style="margin-top:1px;flex-shrink:0;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span style="font-size:12px;color:#4d5156;">"Called at 9pm Sunday — Dave answered straight away and was there in 30 mins. Absolute legend."</span>
+          </div>
+          <div style="margin-top:7px;display:inline-flex;align-items:center;gap:4px;background:#fff7ed;border:1px solid #fcd09a;border-radius:4px;padding:2px 7px;">
+            <span style="font-size:10px;font-weight:700;color:#c2710a;">⚡ Powered by Handle It Reviews</span>
           </div>
         </div>
-        <div style="height:1px;background:#f1f5f9;margin-bottom:14px;"></div>
-        <!-- Reviews -->
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <div style="background:#f8fafc;border-radius:10px;padding:12px 14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:28px;height:28px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#1d4ed8;">SC</div>
-                <div>
-                  <div style="font-size:12px;font-weight:600;color:#0d1117;">Sarah C.</div>
-                  <div style="display:flex;gap:1px;margin-top:1px;">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                </div>
-              </div>
-              <span style="font-size:10px;color:#94a3b8;">2 days ago</span>
+        <!-- Competitor 2 — faded -->
+        <div style="padding:12px 16px;opacity:0.55;">
+          <div style="font-size:15px;color:#1a0dab;margin-bottom:2px;">Express Plumbing Services</div>
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:2px;">
+            <span style="font-size:12px;color:#202124;font-weight:500;">4.1</span>
+            <div style="display:flex;gap:1px;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fbbc04" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
-            <p style="font-size:11.5px;color:#475569;line-height:1.5;margin:0;">"Turned up on time, fixed the issue in under an hour. Really professional. Would 100% recommend."</p>
+            <span style="font-size:12px;color:#70757a;">(17) · Plumber</span>
           </div>
-          <div style="background:#f8fafc;border-radius:10px;padding:12px 14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#16a34a;">BT</div>
-                <div>
-                  <div style="font-size:12px;font-weight:600;color:#0d1117;">Brad T.</div>
-                  <div style="display:flex;gap:1px;margin-top:1px;">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                </div>
-              </div>
-              <span style="font-size:10px;color:#94a3b8;">5 days ago</span>
-            </div>
-            <p style="font-size:11.5px;color:#475569;line-height:1.5;margin:0;">"Called at 7pm on a Sunday with a burst pipe — Dave answered straight away and was there within 45 mins. Legend."</p>
-          </div>
-          <div style="background:#f8fafc;border-radius:10px;padding:12px 14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:28px;height:28px;border-radius:50%;background:#fce7f3;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#be185d;">JM</div>
-                <div>
-                  <div style="font-size:12px;font-weight:600;color:#0d1117;">Jenny M.</div>
-                  <div style="display:flex;gap:1px;margin-top:1px;">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                </div>
-              </div>
-              <span style="font-size:10px;color:#94a3b8;">1 week ago</span>
-            </div>
-            <p style="font-size:11.5px;color:#475569;line-height:1.5;margin:0;">"Third time using Dave — always reliable, always on time, always leaves the place clean. Highly recommend."</p>
-          </div>
+          <div style="font-size:12px;color:#188038;">Open · Closes 6pm</div>
+          <div style="font-size:12px;color:#4d5156;margin-top:2px;">"Good work, would use again."</div>
         </div>
-        <!-- Footer label -->
-        <div style="margin-top:12px;text-align:center;">
-          <span style="font-size:10.5px;color:#94a3b8;">Powered by </span>
-          <span style="font-size:10.5px;font-weight:700;color:#c2710a;">Handle It Reviews</span>
+        <div style="padding:9px 16px;background:#f8f9fa;border-top:1px solid #e8eaed;text-align:center;">
+          <span style="font-size:12px;color:#1a0dab;">More businesses &gt;</span>
         </div>
       </div>
 
@@ -465,46 +456,78 @@ footer{background:#0d1117;padding:48px 0;}
       <h2 class="section-title">What a tradie's Google profile looks like<br>before and after 90 days.</h2>
     </div>
     <div class="ba-grid">
-      <div class="ba-card ba-before">
-        <div class="ba-label">✗ Without Handle It Reviews</div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-          <span style="font-family:'Sora',sans-serif;font-size:52px;font-weight:900;color:#dc2626;line-height:1;">11</span>
-          <div>
-            <div style="font-size:13px;font-weight:700;color:#7f1d1d;">Google Reviews</div>
-            <div style="font-size:12px;color:#94a3b8;">Last review — 8 months ago</div>
+
+      <!-- BEFORE — realistic Google card, thin reviews -->
+      <div style="position:relative;">
+        <div style="text-align:center;margin-bottom:12px;">
+          <span style="background:#fee2e2;color:#dc2626;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:999px;">✗ Before Handle It Reviews</span>
+        </div>
+        <div style="background:#fff;border-radius:10px;border:1px solid #dadce0;font-family:Arial,sans-serif;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          <div style="background:#f8f9fa;border-bottom:1px solid #e8eaed;padding:8px 12px;display:flex;align-items:center;gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span style="font-size:11px;color:#5f6368;">Google Search · Plumbers near me</span>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="font-size:15px;color:#1a0dab;margin-bottom:3px;">Dave's Plumbing &amp; Gas</div>
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+              <span style="font-size:20px;font-weight:900;color:#dc2626;font-family:'Sora',sans-serif;line-height:1;">11</span>
+              <span style="font-size:12px;color:#70757a;">reviews · Plumber</span>
+            </div>
+            <div style="font-size:11px;color:#dc2626;font-weight:600;margin-bottom:3px;">Last review — 8 months ago</div>
+            <div style="font-size:12px;color:#188038;margin-bottom:3px;">Open · Closes 5pm · 0412 345 678</div>
+            <div style="display:flex;align-items:flex-start;gap:5px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#70757a" stroke-width="1.5" style="margin-top:1px;flex-shrink:0;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span style="font-size:12px;color:#4d5156;font-style:italic;">"Good work." — 8 months ago</span>
+            </div>
           </div>
         </div>
-        <div style="background:#fee2e2;border-radius:8px;padding:10px 14px;margin-bottom:16px;">
-          <p style="font-size:12.5px;color:#991b1b;line-height:1.6;">You do great work but your Google profile doesn't show it. Customers comparing you to a competitor with 80 reviews choose them — before they even call.</p>
-        </div>
-        <div class="ba-items">
-          <div class="ba-item">✗ Buried on page 2 of Google Maps</div>
-          <div class="ba-item">✗ Competitors with more reviews get the call</div>
-          <div class="ba-item">✗ Asking manually feels awkward</div>
-          <div class="ba-item">✗ Happy customers forget to review</div>
-          <div class="ba-item">✗ Zero new reviews coming in</div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:#991b1b;"><span>✗</span> Buried behind competitors with more reviews</div>
+          <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:#991b1b;"><span>✗</span> Last review was 8 months ago — looks inactive</div>
+          <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:#991b1b;"><span>✗</span> Customers call someone else before you</div>
         </div>
       </div>
-      <div class="ba-card ba-after">
-        <div class="ba-label">✓ With Handle It Reviews — 90 days later</div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-          <span style="font-family:'Sora',sans-serif;font-size:52px;font-weight:900;color:#16a34a;line-height:1;">73</span>
-          <div>
-            <div style="font-size:13px;font-weight:700;color:#14532d;">Google Reviews</div>
-            <div style="font-size:12px;color:#94a3b8;">3 new reviews this week alone</div>
+
+      <!-- AFTER — realistic Google card, loads of reviews -->
+      <div style="position:relative;">
+        <div style="text-align:center;margin-bottom:12px;">
+          <span style="background:#dcfce7;color:#16a34a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 12px;border-radius:999px;">✓ 90 Days with Handle It Reviews</span>
+        </div>
+        <div style="background:#fff;border-radius:10px;border:1px solid #dadce0;font-family:Arial,sans-serif;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          <div style="background:#f8f9fa;border-bottom:1px solid #e8eaed;padding:8px 12px;display:flex;align-items:center;gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span style="font-size:11px;color:#5f6368;">Google Search · Plumbers near me</span>
+          </div>
+          <div style="padding:12px 14px;background:#fffdf7;border-left:3px solid #c2710a;">
+            <div style="font-size:15px;color:#1a0dab;margin-bottom:3px;font-weight:500;">Dave's Plumbing &amp; Gas</div>
+            <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;">
+              <span style="font-size:12px;color:#202124;font-weight:500;">5.0</span>
+              <div style="display:flex;gap:1px;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <span style="font-size:12px;color:#70757a;">(84) · Plumber</span>
+            </div>
+            <div style="font-size:12px;color:#188038;margin-bottom:3px;">Open 24 hours · 0412 345 678</div>
+            <div style="display:flex;align-items:flex-start;gap:5px;margin-bottom:7px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#70757a" stroke-width="1.5" style="margin-top:1px;flex-shrink:0;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span style="font-size:12px;color:#4d5156;font-style:italic;">"Called at 9pm Sunday — there in 30 mins. Absolute legend." — 2 days ago</span>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:4px;background:#fff7ed;border:1px solid #fcd09a;border-radius:4px;padding:2px 7px;">
+              <span style="font-size:10px;font-weight:700;color:#c2710a;">⚡ Powered by Handle It Reviews</span>
+            </div>
           </div>
         </div>
-        <div style="background:#dcfce7;border-radius:8px;padding:10px 14px;margin-bottom:16px;">
-          <p style="font-size:12.5px;color:#14532d;line-height:1.6;">Every happy customer gets an automated SMS 2 hours after the job. One tap and they leave a review. Your profile grows every single week — without you doing a thing.</p>
-        </div>
-        <div class="ba-items">
-          <div class="ba-item">✓ Top 3 on Google Maps in your area</div>
-          <div class="ba-item">✓ More reviews = more inbound calls</div>
-          <div class="ba-item">✓ Fully automated — zero effort from you</div>
-          <div class="ba-item">✓ Consistent flow of new reviews every week</div>
-          <div class="ba-item">✓ 62 new reviews in 90 days</div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:#14532d;"><span>✓</span> Top result — 84 reviews vs competitors with 9–17</div>
+          <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:#14532d;"><span>✓</span> Fresh reviews every week — looks active and trusted</div>
+          <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:#14532d;"><span>✓</span> Customers call you first — every time</div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -515,34 +538,208 @@ footer{background:#0d1117;padding:48px 0;}
     <div class="section-header">
       <span class="badge-yellow">How It Works</span>
       <h2 class="section-title">Set and forget. We handle everything.</h2>
-      <p class="section-sub">Four steps. Fully automated. You just do the job — we handle the reviews.</p>
+      <p class="section-sub">Three steps. Fully automated. You just do the job — we handle the reviews.</p>
     </div>
-    <div class="step-wrap">
-      <div class="step">
-        <div class="step-num-circle">01</div>
-        <h3>We connect to your workflow</h3>
-        <p>We set up a simple integration with how you track jobs — whether that's a CRM, job management app, or even a simple spreadsheet.</p>
+
+    <!-- Step 1 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:64px;max-width:900px;margin-left:auto;margin-right:auto;">
+      <div>
+        <div class="step-num-circle" style="margin:0 0 16px 0;">01</div>
+        <h3 style="font-size:20px;font-weight:800;color:#0d1117;margin-bottom:10px;">You complete the job</h3>
+        <p style="font-size:14px;color:#64748b;line-height:1.7;">Mark the job done in your system — whether that's ServiceM8, AroFlo, a spreadsheet, or anything else. That's the only trigger we need.</p>
       </div>
-      <div class="step">
-        <div class="step-num-circle">02</div>
-        <h3>Job marked complete</h3>
-        <p>When you mark a job done, our system automatically detects it and starts the review request sequence.</p>
-      </div>
-      <div class="step">
-        <div class="step-num-circle">03</div>
-        <h3>Customer gets an SMS</h3>
-        <p>2 hours after job completion, your customer gets a friendly branded SMS with a direct one-tap link to your Google review page.</p>
-      </div>
-      <div class="step">
-        <div class="step-num-circle">04</div>
-        <h3>Reviews roll in</h3>
-        <p>Happy customers tap the link and leave a review in 60 seconds. You get a monthly report showing your growth.</p>
+      <!-- Job complete visual -->
+      <div style="background:#f8fafc;border-radius:16px;padding:24px;border:1px solid #e2e8f0;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#94a3b8;margin-bottom:14px;">Job Management App</div>
+        <div style="background:#fff;border-radius:10px;border:1px solid #e2e8f0;padding:14px 16px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+            <div style="font-size:13px;font-weight:700;color:#0d1117;">Hot water system install</div>
+            <div style="background:#dcfce7;color:#16a34a;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;">COMPLETE</div>
+          </div>
+          <div style="font-size:12px;color:#64748b;">Sarah Chen · 14 Maple St, Penrith</div>
+          <div style="font-size:12px;color:#94a3b8;margin-top:4px;">Completed 2:34pm · $680</div>
+        </div>
+        <div style="background:#fff;border-radius:10px;border:1px solid #e2e8f0;padding:14px 16px;opacity:0.45;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+            <div style="font-size:13px;font-weight:700;color:#0d1117;">Burst pipe emergency</div>
+            <div style="background:#fef9c3;color:#854d0e;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;">IN PROGRESS</div>
+          </div>
+          <div style="font-size:12px;color:#64748b;">Brad Thompson · 7 River Rd, Parramatta</div>
+        </div>
+        <div style="margin-top:14px;display:flex;align-items:center;gap:6px;font-size:11.5px;color:#16a34a;font-weight:600;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Handle It detects job complete — review request triggered
+        </div>
       </div>
     </div>
-    <div style="margin-top:44px;background:#fef9c3;border:1px solid #fde047;border-radius:14px;padding:24px 28px;max-width:680px;margin-left:auto;margin-right:auto;text-align:center;">
-      <p style="font-size:14px;font-weight:700;color:#713f12;margin-bottom:4px;">Why 2 hours after the job?</p>
-      <p style="font-size:13.5px;color:#854d0e;line-height:1.65;">The customer is still thinking about the great service you delivered. Sending too early feels pushy, too late and they've forgotten. Two hours is the sweet spot — we've tested it across hundreds of trades.</p>
+
+    <!-- Step 2 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:64px;max-width:900px;margin-left:auto;margin-right:auto;">
+      <!-- SMS mockup -->
+      <div style="display:flex;justify-content:center;">
+        <div style="width:260px;">
+          <!-- Phone frame -->
+          <div style="background:#1a1a2e;border-radius:36px;padding:12px;box-shadow:0 20px 48px rgba(0,0,0,0.25);">
+            <!-- Screen -->
+            <div style="background:#fff;border-radius:26px;overflow:hidden;">
+              <!-- Status bar -->
+              <div style="background:#f8fafc;padding:10px 16px 6px;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:10px;font-weight:700;color:#0d1117;">9:41 AM</span>
+                <div style="display:flex;gap:4px;align-items:center;">
+                  <svg width="12" height="10" viewBox="0 0 24 20" fill="#0d1117"><rect x="0" y="6" width="4" height="14" rx="1"/><rect x="6" y="3" width="4" height="17" rx="1"/><rect x="12" y="0" width="4" height="20" rx="1"/><rect x="18" y="0" width="4" height="20" rx="1" opacity="0.3"/></svg>
+                  <svg width="13" height="10" viewBox="0 0 24 20" fill="#0d1117"><path d="M1 7C5.5 2.5 18.5 2.5 23 7" stroke="#0d1117" stroke-width="2.5" fill="none"/><path d="M4 11C7.5 7.5 16.5 7.5 20 11" stroke="#0d1117" stroke-width="2.5" fill="none"/><circle cx="12" cy="15" r="2" fill="#0d1117"/></svg>
+                </div>
+              </div>
+              <!-- Message header -->
+              <div style="background:#f8fafc;border-bottom:1px solid #e2e8f0;padding:10px 16px;text-align:center;">
+                <div style="font-size:11px;color:#64748b;margin-bottom:2px;">Messages</div>
+                <div style="font-size:13px;font-weight:700;color:#0d1117;">Dave's Plumbing</div>
+              </div>
+              <!-- SMS bubble -->
+              <div style="padding:16px 14px;background:#fff;min-height:200px;">
+                <div style="background:#e9f5ff;border-radius:16px 16px 16px 4px;padding:12px 14px;margin-bottom:8px;">
+                  <p style="font-size:12px;color:#0d1117;line-height:1.6;margin:0;">Hey Sarah! 👋 It's Dave from Dave's Plumbing.</p>
+                  <p style="font-size:12px;color:#0d1117;line-height:1.6;margin:8px 0 0;">Hope the new hot water system is working a treat!</p>
+                  <p style="font-size:12px;color:#0d1117;line-height:1.6;margin:8px 0 0;">If you've got 60 seconds, a Google review means the world to a small business like ours 🙏</p>
+                  <p style="font-size:12px;line-height:1.6;margin:8px 0 0;"><span style="color:#c2710a;font-weight:600;text-decoration:underline;">Leave a review here →</span></p>
+                  <p style="font-size:12px;color:#0d1117;line-height:1.6;margin:8px 0 0;">Cheers,<br>Dave 🔧</p>
+                </div>
+                <div style="text-align:left;margin-top:4px;">
+                  <span style="font-size:10px;color:#94a3b8;">Delivered · 4:34 PM</span>
+                </div>
+                <!-- Reply bubble -->
+                <div style="background:#c2710a;border-radius:16px 16px 4px 16px;padding:10px 14px;margin-top:16px;margin-left:40px;">
+                  <p style="font-size:12px;color:#fff;line-height:1.5;margin:0;">Done! Left you 5 stars ⭐️ Great work as always!</p>
+                </div>
+                <div style="text-align:right;margin-top:4px;">
+                  <span style="font-size:10px;color:#94a3b8;">Read · 4:37 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="step-num-circle" style="margin:0 0 16px 0;">02</div>
+        <h3 style="font-size:20px;font-weight:800;color:#0d1117;margin-bottom:10px;">Your customer gets a friendly SMS</h3>
+        <p style="font-size:14px;color:#64748b;line-height:1.7;margin-bottom:16px;">Two hours after the job, your customer automatically receives a friendly, personalised SMS in your business name — with a direct one-tap link to your Google review page.</p>
+        <div style="background:#fef9c3;border:1px solid #fde047;border-radius:10px;padding:14px 16px;">
+          <p style="font-size:12.5px;font-weight:700;color:#713f12;margin-bottom:3px;">Why 2 hours after the job?</p>
+          <p style="font-size:12px;color:#854d0e;line-height:1.6;">The customer is still thinking about the great work you did. Not too pushy, not too late — the sweet spot for getting a response.</p>
+        </div>
+      </div>
     </div>
+
+    <!-- Step 3 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:900px;margin-left:auto;margin-right:auto;">
+      <div>
+        <div class="step-num-circle" style="margin:0 0 16px 0;">03</div>
+        <h3 style="font-size:20px;font-weight:800;color:#0d1117;margin-bottom:10px;">Reviews roll in automatically</h3>
+        <p style="font-size:14px;color:#64748b;line-height:1.7;margin-bottom:16px;">Happy customers tap the link and leave a review in under 60 seconds. Your Google profile grows every week — without you doing a single thing.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#334155;">
+            <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            Average 3–5 new reviews per week
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#334155;">
+            <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            50+ new reviews in the first 90 days
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#334155;">
+            <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            Monthly report showing your review growth
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#334155;">
+            <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            Zero effort from you — completely hands-free
+          </div>
+        </div>
+      </div>
+      <!-- Realistic Google card for step 3 -->
+      <div style="background:#fff;border-radius:10px;border:1px solid #dadce0;font-family:Arial,sans-serif;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+        <div style="background:#f8f9fa;border-bottom:1px solid #e8eaed;padding:9px 13px;display:flex;align-items:center;gap:7px;">
+          <svg width="15" height="15" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <span style="font-size:11px;color:#5f6368;">Your Google Profile · 90 days later</span>
+        </div>
+        <!-- Main listing -->
+        <div style="padding:13px 14px;background:#fffdf7;border-left:3px solid #c2710a;">
+          <div style="font-size:15px;color:#1a0dab;margin-bottom:3px;font-weight:500;">Dave's Plumbing &amp; Gas</div>
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;">
+            <span style="font-size:13px;color:#202124;font-weight:600;">5.0</span>
+            <div style="display:flex;gap:1px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span style="font-size:12px;color:#70757a;">(84) · Plumber</span>
+          </div>
+          <div style="font-size:12px;color:#188038;margin-bottom:8px;">Open 24 hours · 0412 345 678</div>
+          <!-- 3 mini reviews -->
+          <div style="border-top:1px solid #f1f5f9;padding-top:9px;display:flex;flex-direction:column;gap:8px;">
+            <div>
+              <div style="display:flex;align-items:center;gap:5px;margin-bottom:2px;">
+                <div style="width:18px;height:18px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#1d4ed8;flex-shrink:0;">SC</div>
+                <span style="font-size:11px;font-weight:600;color:#202124;">Sarah C.</span>
+                <div style="display:flex;gap:1px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <span style="font-size:10px;color:#70757a;margin-left:auto;">2 days ago</span>
+              </div>
+              <p style="font-size:11px;color:#4d5156;line-height:1.45;margin:0 0 0 23px;">"Turned up on time, fixed in under an hour. Highly recommend!"</p>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:5px;margin-bottom:2px;">
+                <div style="width:18px;height:18px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#16a34a;flex-shrink:0;">BT</div>
+                <span style="font-size:11px;font-weight:600;color:#202124;">Brad T.</span>
+                <div style="display:flex;gap:1px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <span style="font-size:10px;color:#70757a;margin-left:auto;">5 days ago</span>
+              </div>
+              <p style="font-size:11px;color:#4d5156;line-height:1.45;margin:0 0 0 23px;">"Called Sunday night with a burst pipe — there in 30 mins. Legend."</p>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:5px;margin-bottom:2px;">
+                <div style="width:18px;height:18px;border-radius:50%;background:#fce7f3;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#be185d;flex-shrink:0;">JM</div>
+                <span style="font-size:11px;font-weight:600;color:#202124;">Jenny M.</span>
+                <div style="display:flex;gap:1px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="#fbbc04" stroke="#fbbc04" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <span style="font-size:10px;color:#70757a;margin-left:auto;">1 week ago</span>
+              </div>
+              <p style="font-size:11px;color:#4d5156;line-height:1.45;margin:0 0 0 23px;">"Third time using Dave — always reliable, always on time."</p>
+            </div>
+          </div>
+        </div>
+        <div style="padding:8px 14px;background:#f8f9fa;border-top:1px solid #e8eaed;display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:11px;color:#1a0dab;">See all 84 reviews</span>
+          <span style="font-size:10px;font-weight:700;color:#c2710a;">⚡ Handle It Reviews</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
